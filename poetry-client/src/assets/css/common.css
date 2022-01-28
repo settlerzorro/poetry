@@ -1,0 +1,19 @@
+html{
+    height: 100%;
+}
+
+body{
+    background: #f4f4f4;
+}
+
+.price{
+    color: #f56c6c
+}
+
+.el-header, .el-footer {
+    background-color: #409EFF;
+}
+
+a{
+    cursor: pointer;
+}

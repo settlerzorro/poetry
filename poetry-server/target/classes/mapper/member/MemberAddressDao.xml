@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wfuhui.modules.member.dao.MemberAddressDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.wfuhui.modules.member.entity.MemberAddressEntity" id="memberAddressMap">
+        <result property="id" column="Id"/>
+        <result property="memberId" column="member_id"/>
+        <result property="contacts" column="contacts"/>
+        <result property="mobile" column="mobile"/>
+        <result property="provinceId" column="province_id"/>
+        <result property="provinceName" column="province_name"/>
+        <result property="cityId" column="city_id"/>
+        <result property="cityName" column="city_name"/>
+        <result property="districtId" column="district_id"/>
+        <result property="districtName" column="district_name"/>
+        <result property="address" column="address"/>
+        <result property="dft" column="dft"/>
+        <result property="zipcode" column="zipcode"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+	<select id="queryObject" resultType="com.wfuhui.modules.member.entity.MemberAddressEntity">
+		select * from base_member_address where id = #{value}
+	</select>
+
+	<select id="queryList" resultType="com.wfuhui.modules.member.entity.MemberAddressEntity">
+		select * from base_member_address
+		
+		<where>
+			<if test="memberId != null">
+				member_id = #{memberId}
+			</if>
+			<if test="dft != null">
+				and dft = #{dft}
+			</if>
+		</where>
+		
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by ${sidx} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="queryTotal" resultType="int">
+		select count(*) from base_member_address 
+		<where>
+			<if test="memberId != null">
+				member_id = #{memberId}
+			</if>
+		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.wfuhui.modules.member.entity.MemberAddressEntity" useGeneratedKeys="true" keyProperty="id">
+		insert into base_member_address
+		(
+			`member_id`, 
+			`contacts`, 
+			`mobile`, 
+			`province_id`, 
+			`province_name`, 
+			`city_id`, 
+			`city_name`, 
+			`district_id`, 
+			`district_name`, 
+			`address`, 
+			`zipcode`, 
+			`dft`, 
+			`update_time`
+		)
+		values
+		(
+			#{memberId}, 
+			#{contacts}, 
+			#{mobile}, 
+			#{provinceId}, 
+			#{provinceName}, 
+			#{cityId}, 
+			#{cityName}, 
+			#{districtId}, 
+			#{districtName}, 
+			#{address}, 
+			#{zipcode}, 
+			#{dft}, 
+			#{updateTime}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.wfuhui.modules.member.entity.MemberAddressEntity">
+		update base_member_address 
+		<set>
+			<if test="memberId != null">`member_id` = #{memberId}, </if>
+			<if test="contacts != null">`contacts` = #{contacts}, </if>
+			<if test="mobile != null">`mobile` = #{mobile}, </if>
+			<if test="provinceId != null">`province_id` = #{provinceId}, </if>
+			<if test="provinceName != null">`province_name` = #{provinceName}, </if>
+			<if test="cityId != null">`city_id` = #{cityId}, </if>
+			<if test="cityName != null">`city_name` = #{cityName}, </if>
+			<if test="districtId != null">`district_id` = #{districtId}, </if>
+			<if test="districtName != null">`district_name` = #{districtName}, </if>
+			<if test="address != null">`address` = #{address}, </if>
+			<if test="zipcode != null">`zipcode` = #{zipcode}, </if>
+			<if test="dft != null">`dft` = #{dft}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<update id="updateByUserId" parameterType="com.wfuhui.modules.member.entity.MemberAddressEntity">
+		update base_member_address 
+		<set>
+			<if test="contacts != null">`contacts` = #{contacts}, </if>
+			<if test="mobile != null">`mobile` = #{mobile}, </if>
+			<if test="provinceId != null">`province_id` = #{provinceId}, </if>
+			<if test="provinceName != null">`province_name` = #{provinceName}, </if>
+			<if test="cityId != null">`city_id` = #{cityId}, </if>
+			<if test="cityName != null">`city_name` = #{cityName}, </if>
+			<if test="districtId != null">`district_id` = #{districtId}, </if>
+			<if test="districtName != null">`district_name` = #{districtName}, </if>
+			<if test="address != null">`address` = #{address}, </if>
+			<if test="zipcode != null">`zipcode` = #{zipcode}, </if>
+			<if test="dft != null">`dft` = #{dft}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}</if>
+		</set>
+		where member_id = #{memberId}
+	</update>
+	
+	<delete id="delete">
+		delete from base_member_address where id = #{value}
+	</delete>
+	
+	<delete id="deleteBatch">
+		delete from base_member_address where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

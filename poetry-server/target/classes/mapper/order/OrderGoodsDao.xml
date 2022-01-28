@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wfuhui.modules.order.dao.OrderGoodsDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.wfuhui.modules.order.entity.OrderGoodsEntity" id="orderGoodsMap">
+        <result property="id" column="id"/>
+        <result property="orderId" column="order_id"/>
+        <result property="goodsId" column="goods_id"/>
+        <result property="goodsName" column="goods_name"/>
+        <result property="num" column="num"/>
+        <result property="picUrl" column="pic_url"/>
+        <result property="price" column="price"/>
+    </resultMap>
+
+	<select id="queryObject" resultType="com.wfuhui.modules.order.entity.OrderGoodsEntity">
+		select * from order_order_goods where id = #{value}
+	</select>
+
+	<select id="queryList" resultType="com.wfuhui.modules.order.entity.OrderGoodsEntity">
+		select * from order_order_goods
+		
+		<where>
+			<if test="orderId != null">
+				order_id = ${orderId}
+			</if>
+		</where>
+		
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by ${sidx} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="queryTotal" resultType="int">
+		select count(*) from order_order_goods 
+		<where>
+			<if test="orderId != null">
+				order_id = ${orderId}
+			</if>
+		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.wfuhui.modules.order.entity.OrderGoodsEntity" useGeneratedKeys="true" keyProperty="id">
+		insert into order_order_goods
+		(
+			`order_id`, 
+			`goods_id`,
+			`goods_name`,
+			`num`,
+			`pic_url`,
+			`price`
+		)
+		values
+		(
+			#{orderId}, 
+			#{goodsId},
+			#{goodsName},
+			#{num},
+			#{picUrl},
+			#{price}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.wfuhui.modules.order.entity.OrderGoodsEntity">
+		update order_order_goods 
+		<set>
+			<if test="orderId != null">`order_id` = #{orderId}, </if>
+			<if test="goodsId != null">`goods_id` = #{goodsId}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from order_order_goods where id = #{value}
+	</delete>
+	
+	<delete id="deleteBatch">
+		delete from order_order_goods where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>
