@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.poetry.modules.posts.dao.PostsReplyDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.poetry.modules.posts.entity.PostsReplyEntity" id="postsReplyMap">
+        <result property="id" column="id"/>
+		<result property="memberId" column="member_id"/>
+		<result property="memberName" column="member_name"/>
+        <result property="content" column="content"/>
+		<result property="postsId" column="posts_id"/>
+		<result property="replyMemberId" column="reply_member_id"/>
+		<result property="replyMemberName" column="reply_member_name"/>
+        <result property="time" column="time"/>
+    </resultMap>
+
+
+	<select id="queryList" resultType="com.poetry.modules.posts.entity.PostsReplyEntity">
+		select * from posts_reply
+		<where>
+			<if test="postsId != null">
+				posts_id = #{postsId}
+			</if>
+		</where>
+        <choose>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="queryTotal" resultType="int">
+		select count(*) from posts_reply
+	</select>
+	 
+	<insert id="save" parameterType="com.poetry.modules.posts.entity.PostsReplyEntity" useGeneratedKeys="true" keyProperty="id">
+		insert into posts_reply
+		(
+			`id`,
+			`member_id`,
+			`member_name`,
+			`content`,
+			`posts_id`,
+			`reply_member_id`,
+			`reply_member_name`,
+			`time`
+		)
+		values
+		(
+			#{id},
+			#{memberId},
+			#{memberName},
+			#{content},
+			#{postsId},
+			#{replyMemberId},
+			#{replyMemberName},
+			#{time}
+		)
+	</insert>
+	 
+
+	<delete id="delete">
+		delete from posts_reply where id = #{value}
+	</delete>
+	
+	<delete id="deleteBatch">
+		delete from posts_reply where id in
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

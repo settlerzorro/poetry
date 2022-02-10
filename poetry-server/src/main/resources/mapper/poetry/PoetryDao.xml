@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.poetry.modules.poetry.dao.PoetryDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.poetry.modules.poetry.entity.PoetryEntity" id="goodsMap">
+        <result property="id" column="id"/>
+        <result property="goodsName" column="goods_name"/>
+        <result property="picUrl" column="pic_url"/>
+        <result property="describe" column="describe"/>
+        <result property="createTime" column="create_time"/>
+		<result property="author" column="author"/>
+		<result property="explain" column="explain"/>
+		<result property="dynasty" column="dynasty"/>
+        <association property="category" javaType="com.poetry.modules.poetry.entity.CategoryEntity">
+        	<result property="categoryName" column="category_name"/>
+        </association>
+    </resultMap>
+
+	<select id="queryObject" resultType="com.poetry.modules.poetry.entity.PoetryEntity">
+		select * from poetry where id = #{value}
+	</select>
+
+	<select id="queryList" resultMap="goodsMap">
+		select g.*, c.category_name from poetry g left join order_category c on g.category_id = c.id
+		<where>
+			<if test="categoryId != null and categoryId != -1">
+				c.id = #{categoryId}
+			</if>
+			<if test="goodsName != null and goodsName != ''">
+				and g.goods_name like '%${goodsName}%'
+			</if>
+			<if test="author != null and author != ''">
+				and g.author like '%${author}%'
+			</if>
+			<if test="dynasty != null and dynasty != ''">
+				and g.dynasty like '%${dynasty}%'
+			</if>
+			<if test="describe != null and describe != ''">
+				and g.describe like '%${describe}%'
+			</if>
+		</where>
+		
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by ${sidx} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="queryTotal" resultType="int">
+		select count(*) from poetry 
+		<where>
+			<if test="categoryId != null and categoryId != -1">
+				category_id = #{categoryId}
+			</if>
+			<if test="goodsName != null and goodsName != ''">
+				and goods_name like '%${goodsName}%'
+			</if>
+		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.poetry.modules.poetry.entity.PoetryEntity" useGeneratedKeys="true" keyProperty="id">
+		insert into poetry
+		(
+			`goods_name`, 
+			`category_id`, 
+			`pic_url`,
+			`describe`, 
+			`create_time`,
+			'explain'
+		)
+		values
+		(
+			#{goodsName}, 
+			#{categoryId}, 
+			#{picUrl},
+			#{describe}, 
+			#{createTime},
+			#{explain}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.poetry.modules.poetry.entity.PoetryEntity">
+		update poetry 
+		<set>
+			<if test="goodsName != null">`goods_name` = #{goodsName}, </if>
+			<if test="categoryId != null">`category_id` = #{categoryId}, </if>
+			<if test="picUrl != null">`pic_url` = #{picUrl}, </if>
+			<if test="describe != null">`describe` = #{describe}, </if>
+			<if test="explain != null">`explain` = #{explain}, </if>
+			<if test="author != null">`author` = #{author}, </if>
+			<if test="dynasty != null">`dynasty` = #{dynasty} </if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from poetry where id = #{value}
+	</delete>
+	
+	<delete id="deleteBatch">
+		delete from poetry where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+	
+	<select id="queryByIds" resultType="com.poetry.modules.poetry.entity.PoetryEntity">
+		select * from poetry where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</select>
+
+</mapper>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.poetry.modules.collectionAndEvaluation.dao.EvaluationDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.poetry.modules.collectionAndEvaluation.entity.EvaluationEntity" id="evaluationMap">
+        <result property="id" column="id"/>
+        <result property="memberId" column="member_id"/>
+        <result property="content" column="content"/>
+        <result property="star" column="star"/>
+        <result property="createTime" column="create_time"/>
+        <result property="goodsId" column="goods_id"/>
+    </resultMap>
+
+	<select id="queryObject" resultType="com.poetry.modules.collectionAndEvaluation.entity.EvaluationEntity">
+		select * from evaluation where id = #{value}
+	</select>
+
+	<select id="queryList" resultType="com.poetry.modules.collectionAndEvaluation.entity.EvaluationEntity">
+		select e.*, u.nickname as 'member.nickname', u.avatar_url as 'member.avatarUrl' from evaluation e left join base_member u on e.member_id = u.id
+		
+		<where>
+			<if test="goodsId != null">
+				and e.goods_id = #{goodsId}
+			</if>
+		</where>
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by ${sidx} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="queryTotal" resultType="int">
+		select count(*) from evaluation e
+		<where>
+			<if test="goodsId != null">
+				and e.goods_id = #{goodsId}
+			</if>
+		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.poetry.modules.collectionAndEvaluation.entity.EvaluationEntity" useGeneratedKeys="true" keyProperty="id">
+		insert into evaluation
+		(
+			`member_id`,
+			`content`, 
+			`star`, 
+			`create_time`, 
+			`goods_id`
+		)
+		values
+		(
+			#{memberId},
+			#{content}, 
+			#{star}, 
+			#{createTime}, 
+			#{goodsId}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.poetry.modules.collectionAndEvaluation.entity.EvaluationEntity">
+		update evaluation
+		<set>
+			<if test="memberId != null">`member_id` = #{memberId}, </if>
+			<if test="content != null">`content` = #{content}, </if>
+			<if test="star != null">`star` = #{star}, </if>
+			<if test="createTime != null">`create_time` = #{createTime}, </if>
+			<if test="goodsId != null">`goods_id` = #{goodsId}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from evaluation where id = #{value}
+	</delete>
+	
+	<delete id="deleteBatch">
+		delete from evaluation where id in
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

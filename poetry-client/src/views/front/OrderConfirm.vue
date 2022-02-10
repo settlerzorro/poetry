@@ -97,7 +97,9 @@ export default {
         alert("请先选择菜品")
         return
       }
-      var orderGoodsList = [];
+
+
+      var orderGoodsList;
       for(var i = 0; i < this.goodsList.length; i++){
         var orderGoods = {
             goodsId: this.goodsList[i].id,
@@ -106,17 +108,12 @@ export default {
             picUrl: this.goodsList[i].picUrl,
             num: 1
           }
-        orderGoodsList.push(orderGoods);
-      }
-      var data = {
-        totalAmount: this.totalAmount,
-        orderGoodsList: orderGoodsList,
-        orderShipment: this.orderShipment
+          orderGoodsList = orderGoods;
+        //orderGoodsList.push(orderGoods);
       }
 
       var that = this;
-
-      this.$axios.post(that.domain + "/api/order/create", data, {headers: {token: localStorage.getItem("ftoken")}}).then(
+      this.$axios.post(that.domain + "/api/order/create", orderGoodsList, {headers: {token: localStorage.getItem("ftoken")}}).then(
         function(res){
           var r = res.data;
           console.log(r)

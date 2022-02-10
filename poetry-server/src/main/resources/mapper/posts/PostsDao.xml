@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.poetry.modules.posts.dao.PostsDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.poetry.modules.posts.entity.PostsEntity" id="postsMap">
+        <result property="id" column="id"/>
+        <result property="writer" column="writer"/>
+        <result property="memberId" column="member_id"/>
+        <result property="name" column="name"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+
+
+	<select id="queryList" resultType="com.poetry.modules.posts.entity.PostsEntity">
+		select * from posts
+        <choose>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="queryTotal" resultType="int">
+		select count(*) from posts
+	</select>
+	 
+	<insert id="save" parameterType="com.poetry.modules.posts.entity.PostsEntity" useGeneratedKeys="true" keyProperty="id">
+		insert into posts
+		(
+			`id`,
+			`writer`,
+			`member_id`,
+			`name`,
+			`create_time`
+		)
+		values
+		(
+			#{id},
+			#{writer},
+			#{memberId},
+			#{name},
+			#{createTime}
+		)
+	</insert>
+	 
+
+	<delete id="delete">
+		delete from posts where id = #{value}
+	</delete>
+	
+	<delete id="deleteBatch">
+		delete from posts where id in
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

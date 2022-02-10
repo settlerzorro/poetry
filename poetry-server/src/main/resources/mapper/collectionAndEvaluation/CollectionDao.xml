@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.poetry.modules.collectionAndEvaluation.dao.CollectionDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.poetry.modules.collectionAndEvaluation.entity.CollectionEntity" id="collectionMap">
+        <result property="id" column="id"/>
+        <result property="goodsId" column="goods_id"/>
+        <result property="goodsName" column="goods_name"/>
+        <result property="picUrl" column="pic_url"/>
+		<result property="memberId" column="member_id"/>
+		<association property="poetryEntity" javaType="com.poetry.modules.poetry.entity.PoetryEntity">
+			<result property="describe" column="describe"/>
+			<result property="author" column="author"/>
+			<result property="dynasty" column="dynasty"/>
+			<result property="explain" column="explain"/>
+		</association>
+    </resultMap>
+
+	<select id="queryObject" resultType="com.poetry.modules.collectionAndEvaluation.entity.CollectionEntity">
+		select * from collection where id = #{value}
+	</select>
+
+	<select id="queryList" resultMap="collectionMap">
+		select * from collection g left join poetry p on g.goods_id = p.id
+		
+		<where>
+			<if test="memberId != null">
+				g.member_id = ${memberId}
+			</if>
+		</where>
+
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by ${sidx} ${order}
+            </when>
+			<otherwise>
+                order by g.id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="queryTotal" resultType="int">
+		select count(*) from collection 
+		<where>
+			<if test="memberId != null">
+				member_id = ${memberId}
+			</if>
+		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.poetry.modules.collectionAndEvaluation.entity.CollectionEntity" useGeneratedKeys="true" keyProperty="id">
+		insert into collection
+		(
+			`goods_id`,
+			`goods_name`,
+			`pic_url`,
+			`member_id`
+		)
+		values
+		(
+			#{goodsId},
+			#{goodsName},
+			#{picUrl},
+			#{memberId}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.poetry.modules.collectionAndEvaluation.entity.CollectionEntity">
+		update collection 
+		<set>
+			<if test="goodsId != null">`goods_id` = #{goodsId}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from collection where id = #{value}
+	</delete>
+	
+	<delete id="deleteBatch">
+		delete from collection where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

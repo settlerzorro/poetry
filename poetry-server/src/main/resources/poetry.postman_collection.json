@@ -1,0 +1,1138 @@
+{
+	"info": {
+		"_postman_id": "17a17a8e-229c-48b9-aae6-b9859665e5d0",
+		"name": "poetry",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "用户",
+			"item": [
+				{
+					"name": "诗词（菜品）",
+					"item": [
+						{
+							"name": "评论",
+							"item": [
+								{
+									"name": "获取某诗词评论（某商品评论）",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://127.0.0.1:10001/api/order/evaluation/list?goodsId=8",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "10001",
+											"path": [
+												"api",
+												"order",
+												"evaluation",
+												"list"
+											],
+											"query": [
+												{
+													"key": "goodsId",
+													"value": "8"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "发表评论",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "token",
+												"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJhdWQiOiI3MCIsImV4cCI6MTY0NDkxMzg0MH0.D8P3wtrXCb00erW1HT-nB66ADmhAXw5e9pfF6D535TA6y7ixxS9bDuTOg4YWMGer",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"member_id\":66,\"content\":\"666\",\"goodsId\":8}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "http://127.0.0.1:10001/api/order/evaluation/save"
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "收藏",
+							"item": [
+								{
+									"name": "收藏",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "token",
+												"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJhdWQiOiI2NiIsImV4cCI6MTY0NDg5MjM1NX0.477pzkDbgy05qEv_isiZ7W-XZJPQksG36jzuonn0pmoQca9rz4cC6I_AIoLrpIFX",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"goodsId\":29,\"goodsName\":\"fffff\",\"picUrl\":null,\"num\":1}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "http://127.0.0.1:10001/api/order/create"
+									},
+									"response": []
+								},
+								{
+									"name": "获取我的收藏列表",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "token",
+												"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJhdWQiOiI2NiIsImV4cCI6MTY0NDg5MjM1NX0.477pzkDbgy05qEv_isiZ7W-XZJPQksG36jzuonn0pmoQca9rz4cC6I_AIoLrpIFX",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://127.0.0.1:10001/api/order/list?orderStatus=-1",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "10001",
+											"path": [
+												"api",
+												"order",
+												"list"
+											],
+											"query": [
+												{
+													"key": "orderStatus",
+													"value": "-1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "取消收藏",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "token",
+												"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJhdWQiOiI2NiIsImV4cCI6MTY0NDg5MjM1NX0.477pzkDbgy05qEv_isiZ7W-XZJPQksG36jzuonn0pmoQca9rz4cC6I_AIoLrpIFX",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://127.0.0.1:10001/api/order/delete?id=64",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "10001",
+											"path": [
+												"api",
+												"order",
+												"delete"
+											],
+											"query": [
+												{
+													"key": "id",
+													"value": "64"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "新增诗词评论（菜品评论）不知道为啥视频上有，但是打开页面没有评价按钮",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "token",
+												"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJhdWQiOiI2NiIsImV4cCI6MTY0NDkxMzQwM30.cnILi4xDQQnxFztqnd7JK4Fn7sylGfPFXErQKODfAlTTeNzgCbJ3HszN5Vs1wKP-",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"goodsId\":2,\"content\":\"ddddd\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "http://127.0.0.1:10001/api/order/evaluation/save"
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "获取诗词列表（商品列表）和模糊搜索是一个接口",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:10001/api/goods/list?categoryId=-1&page=1&limit=12",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "10001",
+									"path": [
+										"api",
+										"goods",
+										"list"
+									],
+									"query": [
+										{
+											"key": "categoryId",
+											"value": "-1"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "12"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取诗词详情（商品详情）",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:10001/api/goods/detail?id=23",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "10001",
+									"path": [
+										"api",
+										"goods",
+										"detail"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "23"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "模糊搜索诗词,可根据分类，诗词名字，作者，朝代，诗词内容，只要key对应好就行（搜索商品）",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:10001/api/goods/list?author=%E6%9D%8E%E7%99%BD&page=1&limit=10",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "10001",
+									"path": [
+										"api",
+										"goods",
+										"list"
+									],
+									"query": [
+										{
+											"key": "author",
+											"value": "%E6%9D%8E%E7%99%BD"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "广告",
+					"item": [
+						{
+							"name": "获取广告列表",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://127.0.0.1:10001/api/advert/list"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "分类",
+					"item": [
+						{
+							"name": "获取分类列表",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://127.0.0.1:10001/api/category/list"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "帖子论坛",
+					"item": [
+						{
+							"name": "查询所有帖子",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://127.0.0.1:10001/api/posts/list"
+							},
+							"response": []
+						},
+						{
+							"name": "新增帖子",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJhdWQiOiI3MCIsImV4cCI6MTY0NDkxMzg0MH0.D8P3wtrXCb00erW1HT-nB66ADmhAXw5e9pfF6D535TA6y7ixxS9bDuTOg4YWMGer",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"writer\":\"哈哈哈2\",\"memberId\":\"66\",\"name\":\"帖子2\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://127.0.0.1:10001/api/posts/save"
+							},
+							"response": []
+						},
+						{
+							"name": "查询某帖子内容回复",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:10001/api/posts/reply/list?postsId=1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "10001",
+									"path": [
+										"api",
+										"posts",
+										"reply",
+										"list"
+									],
+									"query": [
+										{
+											"key": "postsId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "回复帖子内容",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJhdWQiOiI3MCIsImV4cCI6MTY0NDkxMzg0MH0.D8P3wtrXCb00erW1HT-nB66ADmhAXw5e9pfF6D535TA6y7ixxS9bDuTOg4YWMGer",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"memberId\":66,\"memberName\":\"name\",\"content\":\"content\",\"postsId\":1,\"replyMemberId\":66,\"replyMemberName\":\"replyMemberName\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://127.0.0.1:10001/api/posts/reply/save"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "管理员",
+			"item": [
+				{
+					"name": "广告",
+					"item": [
+						{
+							"name": "查询广告",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJhdWQiOiIxIiwiZXhwIjoxNjQzODc1ODE4fQ.18knKizxTmxisLW4CmorvxJHvSI71VrxRDIUsXoEwQMN1pqmHcRsZa822sXmQbUk",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:10001/advert/list?page=1&limit=10",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "10001",
+									"path": [
+										"advert",
+										"list"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "上传图片",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/D:/jdfj.jpg"
+										}
+									]
+								},
+								"url": "http://127.0.0.1:10001/api/fileupload/upload"
+							},
+							"response": []
+						},
+						{
+							"name": "新增广告",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJhdWQiOiIxIiwiZXhwIjoxNjQzODc1ODE4fQ.18knKizxTmxisLW4CmorvxJHvSI71VrxRDIUsXoEwQMN1pqmHcRsZa822sXmQbUk",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"picUrl\":\"http://localhost:10001/fileupload/20220128/4f9d822b-0d2d-4372-b28f-38081ed68ca3.jpg\",\"enable\":0,\"sort\":\"1\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://127.0.0.1:10001/advert/save"
+							},
+							"response": []
+						},
+						{
+							"name": "修改广告",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJhdWQiOiIxIiwiZXhwIjoxNjQzODc1ODE4fQ.18knKizxTmxisLW4CmorvxJHvSI71VrxRDIUsXoEwQMN1pqmHcRsZa822sXmQbUk",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"id\":5,\"picUrl\":\"http://localhost:10001/fileupload/20220128/4f9d822b-0d2d-4372-b28f-38081ed68ca3.jpg\",\"enable\":1,\"link\":null,\"sort\":\"0\",\"createTime\":\"2022-01-28 13:45:49\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://127.0.0.1:10001/advert/update"
+							},
+							"response": []
+						},
+						{
+							"name": "删除广告",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJhdWQiOiIxIiwiZXhwIjoxNjQzODc1ODE4fQ.18knKizxTmxisLW4CmorvxJHvSI71VrxRDIUsXoEwQMN1pqmHcRsZa822sXmQbUk",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[4]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://127.0.0.1:10001/advert/delete"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "分类",
+					"item": [
+						{
+							"name": "获取分类",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJhdWQiOiIxIiwiZXhwIjoxNjQzODc1ODE4fQ.18knKizxTmxisLW4CmorvxJHvSI71VrxRDIUsXoEwQMN1pqmHcRsZa822sXmQbUk",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:10001/category/list?categoryName=&page=1&limit=10",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "10001",
+									"path": [
+										"category",
+										"list"
+									],
+									"query": [
+										{
+											"key": "categoryName",
+											"value": ""
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "新增分类",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJhdWQiOiIxIiwiZXhwIjoxNjQzODc1ODE4fQ.18knKizxTmxisLW4CmorvxJHvSI71VrxRDIUsXoEwQMN1pqmHcRsZa822sXmQbUk",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"picUrl\":\"\",\"categoryName\":\"哈哈\",\"sort\":\"1\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://127.0.0.1:10001/category/save"
+							},
+							"response": []
+						},
+						{
+							"name": "获取指定分类详细信息",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJhdWQiOiIxIiwiZXhwIjoxNjQzODc1ODE4fQ.18knKizxTmxisLW4CmorvxJHvSI71VrxRDIUsXoEwQMN1pqmHcRsZa822sXmQbUk",
+										"type": "text"
+									}
+								],
+								"url": "http://127.0.0.1:10001/category/info/6"
+							},
+							"response": []
+						},
+						{
+							"name": "修改分类",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJhdWQiOiIxIiwiZXhwIjoxNjQzODc1ODE4fQ.18knKizxTmxisLW4CmorvxJHvSI71VrxRDIUsXoEwQMN1pqmHcRsZa822sXmQbUk",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"id\":6,\"categoryName\":\"哈哈\",\"sort\":\"12\",\"picUrl\":\"\",\"createTime\":\"2022-01-28 13:54:08\",\"goodsList\":null}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://127.0.0.1:10001/category/update"
+							},
+							"response": []
+						},
+						{
+							"name": "删除分类",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJhdWQiOiIxIiwiZXhwIjoxNjQzODc1ODE4fQ.18knKizxTmxisLW4CmorvxJHvSI71VrxRDIUsXoEwQMN1pqmHcRsZa822sXmQbUk",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[8]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://127.0.0.1:10001/category/delete"
+							},
+							"response": []
+						},
+						{
+							"name": "获取所有分类",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJhdWQiOiIxIiwiZXhwIjoxNjQzODc1ODE4fQ.18knKizxTmxisLW4CmorvxJHvSI71VrxRDIUsXoEwQMN1pqmHcRsZa822sXmQbUk",
+										"type": "text"
+									}
+								],
+								"url": "http://127.0.0.1:10001/category/listAll"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "诗词（商品）",
+					"item": [
+						{
+							"name": "新增诗词（商品）",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJhdWQiOiIxIiwiZXhwIjoxNjQ0OTEzOTI1fQ.dzF5jWgO-D56o0OHRI4HbbhWg4Bd04eFWu3zyfHsae05kzHgmKIzM3CDaUtjg-Ow",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"picUrls\":[\"http://localhost:10001/fileupload/20220128/a543b5a1-2f4d-4dab-951e-1de64cfdff50.jpg\",\"http://localhost:10001/fileupload/20220128/2f160c72-ecd6-44b0-99bf-4c701a951002.jpg\"],\"goodsName\":\"测试张\",\"categoryId\":7,\"price\":\"111\",\"stock\":\"1\",\"describe\":\"<p>顶顶顶顶顶顶顶顶顶顶顶</p>\",\"picUrl\":\"http://localhost:10001/fileupload/20220128/a543b5a1-2f4d-4dab-951e-1de64cfdff50.jpg\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://127.0.0.1:10001/goods/save"
+							},
+							"response": []
+						},
+						{
+							"name": "获取古诗详细信息（商品信息）",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJhdWQiOiIxIiwiZXhwIjoxNjQzODc1ODE4fQ.18knKizxTmxisLW4CmorvxJHvSI71VrxRDIUsXoEwQMN1pqmHcRsZa822sXmQbUk",
+										"type": "text"
+									}
+								],
+								"url": "http://127.0.0.1:10001/goods/info/23"
+							},
+							"response": []
+						},
+						{
+							"name": "修改诗词（商品）",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJhdWQiOiIxIiwiZXhwIjoxNjQ0OTE1NTg1fQ.CJhjjPyfnbr2F6mN1XZjqi-3GS2G3Hznjmko0kDwc1wcIW145WoaqRbibHze2byv",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 30,\r\n    \"goodsName\": \"测试张\",\r\n    \"categoryId\": 7,\r\n    \"picUrl\": \"http://localhost:10001/fileupload/20220128/a543b5a1-2f4d-4dab-951e-1de64cfdff50.jpg\",\r\n    \"describe\": \"<p>顶顶顶顶顶顶顶顶顶顶顶dddasdasdasdasdasd</p>\",\r\n    \"createTime\": \"2022-02-08 16:39:25\",\r\n    \"picUrls\": [\r\n        \"http://localhost:10001/fileupload/20220128/a543b5a1-2f4d-4dab-951e-1de64cfdff50.jpg\",\r\n        \"http://localhost:10001/fileupload/20220128/2f160c72-ecd6-44b0-99bf-4c701a951002.jpg\"\r\n    ],\r\n    \"author\": \"张大爷\",\r\n    \"dynasty\": \"新中国\",\r\n    \"explain\": \"这是一首诗\",\r\n    \"category\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://127.0.0.1:10001/goods/update"
+							},
+							"response": []
+						},
+						{
+							"name": "删除诗词（商品）",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJhdWQiOiIxIiwiZXhwIjoxNjQzODc1ODE4fQ.18knKizxTmxisLW4CmorvxJHvSI71VrxRDIUsXoEwQMN1pqmHcRsZa822sXmQbUk",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[24]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://127.0.0.1:10001/goods/delete"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "论坛（评价）",
+					"item": [
+						{
+							"name": "查询所有帖子",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJhdWQiOiIxIiwiZXhwIjoxNjQ0OTE1NTg1fQ.CJhjjPyfnbr2F6mN1XZjqi-3GS2G3Hznjmko0kDwc1wcIW145WoaqRbibHze2byv",
+										"type": "text"
+									}
+								],
+								"url": "http://127.0.0.1:10001/posts/list"
+							},
+							"response": []
+						},
+						{
+							"name": "删除帖子",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJhdWQiOiIxIiwiZXhwIjoxNjQ0OTE1NTg1fQ.CJhjjPyfnbr2F6mN1XZjqi-3GS2G3Hznjmko0kDwc1wcIW145WoaqRbibHze2byv",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[2]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://127.0.0.1:10001/posts/delete"
+							},
+							"response": []
+						},
+						{
+							"name": "查询某帖子内容",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJhdWQiOiIxIiwiZXhwIjoxNjQ0OTE1NTg1fQ.CJhjjPyfnbr2F6mN1XZjqi-3GS2G3Hznjmko0kDwc1wcIW145WoaqRbibHze2byv",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:10001/posts/reply/list?postsId=1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "10001",
+									"path": [
+										"posts",
+										"reply",
+										"list"
+									],
+									"query": [
+										{
+											"key": "postsId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "删除某帖子回复内容",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJhdWQiOiIxIiwiZXhwIjoxNjQ0OTE1NTg1fQ.CJhjjPyfnbr2F6mN1XZjqi-3GS2G3Hznjmko0kDwc1wcIW145WoaqRbibHze2byv",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[1]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://127.0.0.1:10001/posts/reply/delete"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "管理员",
+					"item": [
+						{
+							"name": "获取所有管理员",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJhdWQiOiIxIiwiZXhwIjoxNjQzODc1ODE4fQ.18knKizxTmxisLW4CmorvxJHvSI71VrxRDIUsXoEwQMN1pqmHcRsZa822sXmQbUk",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:10001/sys/user/list?page=1&limit=10",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "10001",
+									"path": [
+										"sys",
+										"user",
+										"list"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "查询指定管理员",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJhdWQiOiIxIiwiZXhwIjoxNjQzOTU2MTk4fQ.6Clk0-nitQnFR8SDSDtg6vdEpWeknRduehrZ-zWpy9ALn2xiXxBf-qAbzLyi7E9P",
+										"type": "text"
+									}
+								],
+								"url": "http://127.0.0.1:10001/sys/user/info/3"
+							},
+							"response": []
+						},
+						{
+							"name": "新增管理员",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJhdWQiOiIxIiwiZXhwIjoxNjQzODc1ODE4fQ.18knKizxTmxisLW4CmorvxJHvSI71VrxRDIUsXoEwQMN1pqmHcRsZa822sXmQbUk",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"username\":\"admin2\",\"password\":\"admin2\",\"email\":\"1111111\",\"mobile\":\"2222222\",\"status\":1}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://127.0.0.1:10001/sys/user/save"
+							},
+							"response": []
+						},
+						{
+							"name": "修改管理员",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJhdWQiOiIxIiwiZXhwIjoxNjQzOTU2MTk4fQ.6Clk0-nitQnFR8SDSDtg6vdEpWeknRduehrZ-zWpy9ALn2xiXxBf-qAbzLyi7E9P",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"id\":3,\"username\":\"admin2\",\"password\":\"\",\"email\":\"1111111\",\"mobile\":\"2222222\",\"status\":0,\"createTime\":\"2022-01-28 14:28:53\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://127.0.0.1:10001/sys/user/update"
+							},
+							"response": []
+						},
+						{
+							"name": "删除管理员",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJhdWQiOiIxIiwiZXhwIjoxNjQzOTU2MzA0fQ.DO_AQaOwagdkfY7ZSGWSVTdbPF21uuJ2Bqf5O3ffsemH7LifJGr89emJFMzyIcU4",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[3]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://127.0.0.1:10001/sys/user/delete"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "会员管理-不用管，应该直接用就好",
+					"item": []
+				},
+				{
+					"name": "查询诗数量，词数量，用户数量，最近注册用户数量（菜品数，用户数，订单数）",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJhdWQiOiIxIiwiZXhwIjoxNjQzODc1ODE4fQ.18knKizxTmxisLW4CmorvxJHvSI71VrxRDIUsXoEwQMN1pqmHcRsZa822sXmQbUk",
+								"type": "text"
+							}
+						],
+						"url": "http://127.0.0.1:10001/statistics/query"
+					},
+					"response": []
+				},
+				{
+					"name": "获取诗词列表（商品列表）",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJhdWQiOiIxIiwiZXhwIjoxNjQzODc1ODE4fQ.18knKizxTmxisLW4CmorvxJHvSI71VrxRDIUsXoEwQMN1pqmHcRsZa822sXmQbUk",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:10001/goods/list?goodsName=&page=1&limit=10",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "10001",
+							"path": [
+								"goods",
+								"list"
+							],
+							"query": [
+								{
+									"key": "goodsName",
+									"value": ""
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "登录",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://127.0.0.1:10001/sys/login"
+			},
+			"response": []
+		}
+	]
+}

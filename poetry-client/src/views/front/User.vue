@@ -11,7 +11,7 @@
                     <div>
                       <el-menu router default-active="1">
                         <el-menu-item route="user" index="1">用户信息</el-menu-item>
-                        <el-menu-item route="order" index="2">我的订单</el-menu-item>
+                        <el-menu-item route="order" index="2">我的收藏</el-menu-item>
                         <el-menu-item route="address" index="3">我的地址</el-menu-item>
                       </el-menu>
                     </div>
