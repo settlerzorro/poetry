@@ -22,11 +22,7 @@
       </el-menu-item>
       <el-menu-item index="5" route="admin_goods">
           <i class="el-icon-menu"></i>
-          <span slot="title">菜品管理</span>
-      </el-menu-item>
-      <el-menu-item index="6" route="admin_order">
-          <i class="el-icon-menu"></i>
-          <span slot="title">订单管理</span>
+          <span slot="title">古诗词管理</span>
       </el-menu-item>
       <el-menu-item index="7" route="admin_evaluation">
           <i class="el-icon-menu"></i>

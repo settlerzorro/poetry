@@ -1,9 +1,8 @@
 <template>
-  <div class="header" style="width: 1280px; margin: 0 auto"><a class="title" href="/#/">点餐外卖系统</a>
+  <div class="header" style="width: 1280px; margin: 0 auto"><a class="title" href="/#/">古诗词欣赏系统</a>
     <span style="float: right">
     <a href="/#/login" v-if="!user">登录</a>
     <a href="/#/user" v-if="user">欢迎，{{user.loginName}}</a>
-    <a href="/#/cart" v-if="user" style="margin-left: 20px">购物车</a>
     <a v-if="user" @click="logout()" style="margin-left: 20px">退出</a>
     <a href="/#/admin_index" style="margin-left: 20px" target="_blank">管理端</a>
     </span>

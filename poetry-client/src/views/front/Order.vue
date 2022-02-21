@@ -11,37 +11,21 @@
                     <div>
                       <el-menu router default-active="2">
                         <el-menu-item route="user" index="1">用户信息</el-menu-item>
-                        <el-menu-item route="order" index="2">我的订单</el-menu-item>
-                        <el-menu-item route="address" index="3">我的地址</el-menu-item>
+                        <el-menu-item route="order" index="2">我的收藏</el-menu-item>
                       </el-menu>
                     </div>
                   </el-col>
                   <el-col :span="20">
                     <el-tabs v-model="status" @tab-click="statusClick">
                       <el-tab-pane label="全部" name="-1"></el-tab-pane>
-                      <el-tab-pane label="待付款" name="1"></el-tab-pane>
-                      <el-tab-pane label="待配送" name="2"></el-tab-pane>
-                      <el-tab-pane label="待收货" name="3"></el-tab-pane>
-                      <el-tab-pane label="已完成" name="4"></el-tab-pane>
                     </el-tabs>
                     <div v-for="(order, index) in orderList" :key="index" style="background: #fff; border-bottom: 1px solid #ddd; padding: 10px">
-                        <div style="display: flex; margin-bottom: 4px">
-                          <span style="flex: 1; font-size: 14px; color: #555">订单编号：{{order.orderNumber}}</span>
-                          <span style="font-size: 14px; color: #555">{{order.createTime}}</span>
+                        <div class="orderList" style="cursor: pointer; margin-bottom: 8px" @click="detail(order.goodsId)">
+                        <el-image alt="" :src="order.picUrl" style="width: 100px; height: 100px; margin-right: 10px"></el-image>
+                        <div class="name" style="font-size: 16px; margin-bottom: 6px; display: inline-block; position: relative; top: -100px; left: 110px; width: calc(100% - 110px);">{{order.goodsName}}</div>
                         </div>
-                        <div class="goods" v-for="(goods, index) in order.orderGoodsList" :key="index" style="display: flex; margin-bottom: 4px">
-                          <el-image alt="" :src="goods.picUrl" style="width: 100px; height: 100px; margin-right: 10px"></el-image>
-                          <div style="flex: 1">
-                            <div style="font-size: 16px; margin-bottom: 6px">{{goods.goodsName}}</div>
-                            <div class="price">￥{{goods.price}}</div>
-                          </div>
-                        </div>
-                        
                         <div style="text-align: right;">
-                          <span class="price">￥{{order.totalAmount}}</span>
-                          <el-button type="info" round v-if="order.orderStatus == 1" @click="cancel(order.id)" size="mini">取消</el-button>
-                          <el-button type="primary" round v-if="order.orderStatus == 1" @click="pay(order.id)" size="mini">支付</el-button>
-                          <el-button type="success" round v-if="order.orderStatus == 3" @click="complete(order.id)" size="mini">完成</el-button>
+                          <el-button round  @click="cancel(order.id)" size="mini">取消收藏</el-button>
                         </div>
                     </div>
                   </el-col>
@@ -79,9 +63,16 @@ export default {
           console.log(r)
           if(r.code == 0){
             that.orderList = r.orderList;
+          } else if (res.data.code == 401) {
+            that.$router.push("/login");
+          } else {
+            that.$message.error(res.data.msg);
           }
         }
       )
+    },
+    detail(id){
+      this.$router.push({path: "detail", query: {id: id}});
     },
     statusClick(e){
       this.status = e.name;
@@ -92,15 +83,14 @@ export default {
     },
     cancel(e){
       var that = this;
-      this.$axios.get(that.domain + "/api/order/cancel", {
-        params: {
-          id: e
-        }, 
-        headers:{ token: localStorage.getItem("ftoken") 
-        }}).then(
+      this.$axios.post(that.domain + "/api/order/delete?id=" + e, {}, {headers:{ token: localStorage.getItem("ftoken") }}).then(
         function(res){
           if(res.data.code == 0){
             that.getOrder();
+          } else if (res.data.code == 401) {
+            that.$router.push("/login");
+          } else {
+            that.$message.error(res.data.msg);
           }
         }
       )
@@ -116,6 +106,10 @@ export default {
         function(res){
           if(res.data.code == 0){
             that.getOrder();
+          } else if (res.data.code == 401) {
+            that.$router.push("/login");
+          } else {
+            that.$message.error(res.data.msg);
           }
         }
       )
@@ -138,6 +132,8 @@ export default {
 </script>
 
 <style scoped>
-
+.orderList:hover .name {
+  color: #409EFF;
+}
 
 </style>

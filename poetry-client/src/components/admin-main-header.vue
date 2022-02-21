@@ -1,6 +1,6 @@
 <template>
   <div style="width: 100%" class="header">
-    <a class="title">点餐外卖系统</a>
+    <a class="title">古诗词欣赏系统</a>
     <span style="float: right">
       <a v-if="user">欢迎，{{user.username}}</a>
       <a @click="logout()" style="margin-left: 20px">退出</a>

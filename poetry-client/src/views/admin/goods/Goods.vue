@@ -8,16 +8,14 @@
                 <el-main>
                      <div v-if="showList">
                     <el-form :inline="true" :model="q" class="demo-form-inline">
-                        <el-form-item label="菜品名称">
-                            <el-input v-model="q.goodsName" placeholder="菜品名称"></el-input>
+                        <el-form-item label="古诗词名称">
+                            <el-input v-model="q.goodsName" placeholder="古诗词名称"></el-input>
                         </el-form-item>
                         <el-form-item>
                             <el-button type="primary" @click="query">查询</el-button>
                             <el-button type="success" @click="add">新增</el-button>
                             <el-button type="warning" @click="update">修改</el-button>
                             <el-button type="danger" @click="del">删除</el-button>
-                            <el-button type="warning" @click="upper">上架</el-button>
-                            <el-button type="warning" @click="lower">下架</el-button>
                         </el-form-item>
                     </el-form>
                         <el-table
@@ -40,28 +38,12 @@
                         </el-table-column>
                         <el-table-column
                             prop="goodsName"
-                            label="菜品名称"
+                            label="古诗词名称"
                             >
                         </el-table-column>
                         <el-table-column
                             prop="category.categoryName"
                             label="分类">
-                        </el-table-column>
-                        <el-table-column
-                            prop="price"
-                            label="价格">
-                        </el-table-column>
-                        <el-table-column
-                            prop="stock"
-                            label="库存">
-                        </el-table-column>
-                        <el-table-column
-                            prop="status"
-                            label="状态">
-                            <template slot-scope="scope">
-                              <el-tag type="info" v-if="scope.row.status == 0">下架</el-tag>
-                              <el-tag type="primary" v-if="scope.row.status == 1">上架</el-tag>
-                            </template>
                         </el-table-column>
                         <el-table-column
                             prop="createTime"
