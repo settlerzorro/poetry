@@ -20,6 +20,11 @@ public class PostsServiceImpl implements PostsService {
 	public List<PostsEntity> queryList(Map<String, Object> map){
 		return postsDao.queryList(map);
 	}
+
+	@Override
+	public PostsEntity queryContent(Map<String, Object> map){
+		return postsDao.queryObject(map);
+	}
 	
 	@Override
 	public int queryTotal(Map<String, Object> map){

@@ -25,7 +25,7 @@
 		</where>
         <choose>
 			<otherwise>
-                order by id desc
+                order by id
 			</otherwise>
         </choose>
 		<if test="offset != null and limit != null">

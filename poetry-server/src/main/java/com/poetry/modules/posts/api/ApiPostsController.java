@@ -30,6 +30,15 @@ public class ApiPostsController {
         return R.ok().put("postsList", postsList);
     }
 
+	@AuthIgnore
+	@GetMapping("queryContent")
+	public R queryContent(@RequestParam(value = "id",required = false) Integer id){
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("id", id);
+		PostsEntity post = postsService.queryContent(params);
+		return R.ok().put("post", post);
+	}
+
 	/**
 	 * 保存
 	 */

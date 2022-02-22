@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "17a17a8e-229c-48b9-aae6-b9859665e5d0",
+		"_postman_id": "1fc0d13b-02ba-4801-a389-263125f31140",
 		"name": "poetry",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -65,7 +65,23 @@
 												}
 											}
 										},
-										"url": "http://127.0.0.1:10001/api/order/evaluation/save"
+										"url": {
+											"raw": "http://127.0.0.1:10001/api/order/evaluation/save",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "10001",
+											"path": [
+												"api",
+												"order",
+												"evaluation",
+												"save"
+											]
+										}
 									},
 									"response": []
 								}
@@ -94,7 +110,22 @@
 												}
 											}
 										},
-										"url": "http://127.0.0.1:10001/api/order/create"
+										"url": {
+											"raw": "http://127.0.0.1:10001/api/order/create",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "10001",
+											"path": [
+												"api",
+												"order",
+												"create"
+											]
+										}
 									},
 									"response": []
 								},
@@ -190,7 +221,23 @@
 												}
 											}
 										},
-										"url": "http://127.0.0.1:10001/api/order/evaluation/save"
+										"url": {
+											"raw": "http://127.0.0.1:10001/api/order/evaluation/save",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "10001",
+											"path": [
+												"api",
+												"order",
+												"evaluation",
+												"save"
+											]
+										}
 									},
 									"response": []
 								}
@@ -312,7 +359,22 @@
 							"request": {
 								"method": "GET",
 								"header": [],
-								"url": "http://127.0.0.1:10001/api/advert/list"
+								"url": {
+									"raw": "http://127.0.0.1:10001/api/advert/list",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "10001",
+									"path": [
+										"api",
+										"advert",
+										"list"
+									]
+								}
 							},
 							"response": []
 						}
@@ -326,7 +388,22 @@
 							"request": {
 								"method": "GET",
 								"header": [],
-								"url": "http://127.0.0.1:10001/api/category/list"
+								"url": {
+									"raw": "http://127.0.0.1:10001/api/category/list",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "10001",
+									"path": [
+										"api",
+										"category",
+										"list"
+									]
+								}
 							},
 							"response": []
 						}
@@ -340,7 +417,22 @@
 							"request": {
 								"method": "GET",
 								"header": [],
-								"url": "http://127.0.0.1:10001/api/posts/list"
+								"url": {
+									"raw": "http://127.0.0.1:10001/api/posts/list",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "10001",
+									"path": [
+										"api",
+										"posts",
+										"list"
+									]
+								}
 							},
 							"response": []
 						},
@@ -364,7 +456,22 @@
 										}
 									}
 								},
-								"url": "http://127.0.0.1:10001/api/posts/save"
+								"url": {
+									"raw": "http://127.0.0.1:10001/api/posts/save",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "10001",
+									"path": [
+										"api",
+										"posts",
+										"save"
+									]
+								}
 							},
 							"response": []
 						},
@@ -419,7 +526,66 @@
 										}
 									}
 								},
-								"url": "http://127.0.0.1:10001/api/posts/reply/save"
+								"url": {
+									"raw": "http://127.0.0.1:10001/api/posts/reply/save",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "10001",
+									"path": [
+										"api",
+										"posts",
+										"reply",
+										"save"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "查询帖子内容",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "id",
+											"value": "6",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:10001/api/posts/queryContent?id=6",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "10001",
+									"path": [
+										"api",
+										"posts",
+										"queryContent"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "6"
+										}
+									]
+								}
 							},
 							"response": []
 						}
@@ -487,7 +653,22 @@
 										}
 									]
 								},
-								"url": "http://127.0.0.1:10001/api/fileupload/upload"
+								"url": {
+									"raw": "http://127.0.0.1:10001/api/fileupload/upload",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "10001",
+									"path": [
+										"api",
+										"fileupload",
+										"upload"
+									]
+								}
 							},
 							"response": []
 						},
@@ -511,7 +692,21 @@
 										}
 									}
 								},
-								"url": "http://127.0.0.1:10001/advert/save"
+								"url": {
+									"raw": "http://127.0.0.1:10001/advert/save",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "10001",
+									"path": [
+										"advert",
+										"save"
+									]
+								}
 							},
 							"response": []
 						},
@@ -535,7 +730,21 @@
 										}
 									}
 								},
-								"url": "http://127.0.0.1:10001/advert/update"
+								"url": {
+									"raw": "http://127.0.0.1:10001/advert/update",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "10001",
+									"path": [
+										"advert",
+										"update"
+									]
+								}
 							},
 							"response": []
 						},
@@ -559,7 +768,21 @@
 										}
 									}
 								},
-								"url": "http://127.0.0.1:10001/advert/delete"
+								"url": {
+									"raw": "http://127.0.0.1:10001/advert/delete",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "10001",
+									"path": [
+										"advert",
+										"delete"
+									]
+								}
 							},
 							"response": []
 						}
@@ -631,7 +854,21 @@
 										}
 									}
 								},
-								"url": "http://127.0.0.1:10001/category/save"
+								"url": {
+									"raw": "http://127.0.0.1:10001/category/save",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "10001",
+									"path": [
+										"category",
+										"save"
+									]
+								}
 							},
 							"response": []
 						},
@@ -646,7 +883,22 @@
 										"type": "text"
 									}
 								],
-								"url": "http://127.0.0.1:10001/category/info/6"
+								"url": {
+									"raw": "http://127.0.0.1:10001/category/info/6",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "10001",
+									"path": [
+										"category",
+										"info",
+										"6"
+									]
+								}
 							},
 							"response": []
 						},
@@ -670,7 +922,21 @@
 										}
 									}
 								},
-								"url": "http://127.0.0.1:10001/category/update"
+								"url": {
+									"raw": "http://127.0.0.1:10001/category/update",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "10001",
+									"path": [
+										"category",
+										"update"
+									]
+								}
 							},
 							"response": []
 						},
@@ -694,7 +960,21 @@
 										}
 									}
 								},
-								"url": "http://127.0.0.1:10001/category/delete"
+								"url": {
+									"raw": "http://127.0.0.1:10001/category/delete",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "10001",
+									"path": [
+										"category",
+										"delete"
+									]
+								}
 							},
 							"response": []
 						},
@@ -709,7 +989,21 @@
 										"type": "text"
 									}
 								],
-								"url": "http://127.0.0.1:10001/category/listAll"
+								"url": {
+									"raw": "http://127.0.0.1:10001/category/listAll",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "10001",
+									"path": [
+										"category",
+										"listAll"
+									]
+								}
 							},
 							"response": []
 						}
@@ -738,7 +1032,21 @@
 										}
 									}
 								},
-								"url": "http://127.0.0.1:10001/goods/save"
+								"url": {
+									"raw": "http://127.0.0.1:10001/goods/save",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "10001",
+									"path": [
+										"goods",
+										"save"
+									]
+								}
 							},
 							"response": []
 						},
@@ -753,7 +1061,22 @@
 										"type": "text"
 									}
 								],
-								"url": "http://127.0.0.1:10001/goods/info/23"
+								"url": {
+									"raw": "http://127.0.0.1:10001/goods/info/23",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "10001",
+									"path": [
+										"goods",
+										"info",
+										"23"
+									]
+								}
 							},
 							"response": []
 						},
@@ -777,7 +1100,21 @@
 										}
 									}
 								},
-								"url": "http://127.0.0.1:10001/goods/update"
+								"url": {
+									"raw": "http://127.0.0.1:10001/goods/update",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "10001",
+									"path": [
+										"goods",
+										"update"
+									]
+								}
 							},
 							"response": []
 						},
@@ -801,7 +1138,21 @@
 										}
 									}
 								},
-								"url": "http://127.0.0.1:10001/goods/delete"
+								"url": {
+									"raw": "http://127.0.0.1:10001/goods/delete",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "10001",
+									"path": [
+										"goods",
+										"delete"
+									]
+								}
 							},
 							"response": []
 						}
@@ -821,7 +1172,21 @@
 										"type": "text"
 									}
 								],
-								"url": "http://127.0.0.1:10001/posts/list"
+								"url": {
+									"raw": "http://127.0.0.1:10001/posts/list",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "10001",
+									"path": [
+										"posts",
+										"list"
+									]
+								}
 							},
 							"response": []
 						},
@@ -845,7 +1210,21 @@
 										}
 									}
 								},
-								"url": "http://127.0.0.1:10001/posts/delete"
+								"url": {
+									"raw": "http://127.0.0.1:10001/posts/delete",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "10001",
+									"path": [
+										"posts",
+										"delete"
+									]
+								}
 							},
 							"response": []
 						},
@@ -908,7 +1287,22 @@
 										}
 									}
 								},
-								"url": "http://127.0.0.1:10001/posts/reply/delete"
+								"url": {
+									"raw": "http://127.0.0.1:10001/posts/reply/delete",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "10001",
+									"path": [
+										"posts",
+										"reply",
+										"delete"
+									]
+								}
 							},
 							"response": []
 						}
@@ -968,7 +1362,23 @@
 										"type": "text"
 									}
 								],
-								"url": "http://127.0.0.1:10001/sys/user/info/3"
+								"url": {
+									"raw": "http://127.0.0.1:10001/sys/user/info/3",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "10001",
+									"path": [
+										"sys",
+										"user",
+										"info",
+										"3"
+									]
+								}
 							},
 							"response": []
 						},
@@ -992,7 +1402,22 @@
 										}
 									}
 								},
-								"url": "http://127.0.0.1:10001/sys/user/save"
+								"url": {
+									"raw": "http://127.0.0.1:10001/sys/user/save",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "10001",
+									"path": [
+										"sys",
+										"user",
+										"save"
+									]
+								}
 							},
 							"response": []
 						},
@@ -1016,7 +1441,22 @@
 										}
 									}
 								},
-								"url": "http://127.0.0.1:10001/sys/user/update"
+								"url": {
+									"raw": "http://127.0.0.1:10001/sys/user/update",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "10001",
+									"path": [
+										"sys",
+										"user",
+										"update"
+									]
+								}
 							},
 							"response": []
 						},
@@ -1040,7 +1480,22 @@
 										}
 									}
 								},
-								"url": "http://127.0.0.1:10001/sys/user/delete"
+								"url": {
+									"raw": "http://127.0.0.1:10001/sys/user/delete",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "10001",
+									"path": [
+										"sys",
+										"user",
+										"delete"
+									]
+								}
 							},
 							"response": []
 						}
@@ -1061,7 +1516,21 @@
 								"type": "text"
 							}
 						],
-						"url": "http://127.0.0.1:10001/statistics/query"
+						"url": {
+							"raw": "http://127.0.0.1:10001/statistics/query",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "10001",
+							"path": [
+								"statistics",
+								"query"
+							]
+						}
 					},
 					"response": []
 				},
@@ -1130,7 +1599,62 @@
 						}
 					]
 				},
-				"url": "http://127.0.0.1:10001/sys/login"
+				"url": {
+					"raw": "http://127.0.0.1:10001/sys/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "10001",
+					"path": [
+						"sys",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "登录（用户）",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "loginName",
+							"value": "zhang",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "zhang",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:10001/api/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "10001",
+					"path": [
+						"api",
+						"login"
+					]
+				}
 			},
 			"response": []
 		}

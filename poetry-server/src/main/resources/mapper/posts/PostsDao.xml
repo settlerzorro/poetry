@@ -10,11 +10,12 @@
         <result property="memberId" column="member_id"/>
         <result property="name" column="name"/>
         <result property="createTime" column="create_time"/>
+		<result property="content" column="content"/>
     </resultMap>
 
 
 	<select id="queryList" resultType="com.poetry.modules.posts.entity.PostsEntity">
-		select * from posts
+		select id,writer,member_id,name,create_time from posts
         <choose>
 			<otherwise>
                 order by id desc
@@ -23,6 +24,15 @@
 		<if test="offset != null and limit != null">
 			limit #{offset}, #{limit}
 		</if>
+	</select>
+
+	<select id="queryObject" resultType="com.poetry.modules.posts.entity.PostsEntity">
+		select * from posts
+		<where>
+			<if test="id != null">
+				id = #{id}
+			</if>
+		</where>
 	</select>
 	
  	<select id="queryTotal" resultType="int">
@@ -36,7 +46,8 @@
 			`writer`,
 			`member_id`,
 			`name`,
-			`create_time`
+			`create_time`,
+			`content`
 		)
 		values
 		(
@@ -44,7 +55,8 @@
 			#{writer},
 			#{memberId},
 			#{name},
-			#{createTime}
+			#{createTime},
+		 	#{content}
 		)
 	</insert>
 	 

@@ -3,7 +3,7 @@
       <el-container>
         <el-header>
           <div style="width: 1280px; margin: 0 auto" class="header">
-          <a href="/#/" class="title">点餐外卖系统</a>
+          <a href="/#/" class="title">古诗词欣赏系统</a>
           </div>
         </el-header>
         <el-main>

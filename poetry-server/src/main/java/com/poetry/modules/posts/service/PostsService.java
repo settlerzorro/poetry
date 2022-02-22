@@ -15,6 +15,8 @@ public interface PostsService {
 	
 
 	List<PostsEntity> queryList(Map<String, Object> map);
+
+	PostsEntity queryContent(Map<String, Object> map);
 	
 	int queryTotal(Map<String, Object> map);
 	

@@ -10,8 +10,8 @@ import User from '../views/front/User'
 import Order from '../views/front/Order'
 import Address from '../views/front/Address'
 import Register from '../views/Register'
-import OrderConfirm from '../views/front/OrderConfirm'
-import OrderPay from '../views/front/OrderPay'
+import Posts from '../views/front/Posts'
+import PostsDetail from '../views/front/PostsDetail'
 
 import AdminIndex from '../views/admin/Index'
 import AdminLogin from '../views/admin/Login'
@@ -68,19 +68,19 @@ export default new Router({
             component: Order
         },
         {
+            path: '/posts',
+            name: 'Posts',
+            component: Posts
+        },
+        {
+            path: '/posts_detail',
+            name: 'PostsDetail',
+            component: PostsDetail
+        },
+        {
             path: '/address',
             name: 'Address',
             component: Address
-        },
-        {
-            path: '/orderConfirm',
-            name: 'OrderConfirm',
-            component: OrderConfirm
-        },
-        {
-            path: '/orderPay',
-            name: 'OrderPay',
-            component: OrderPay
         },
         {
             path: '/admin_index',

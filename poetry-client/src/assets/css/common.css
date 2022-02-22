@@ -17,3 +17,7 @@ body{
 a{
     cursor: pointer;
 }
+
+.content img {
+    max-width: 100%;
+}
