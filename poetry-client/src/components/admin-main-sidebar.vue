@@ -28,6 +28,10 @@
           <i class="el-icon-menu"></i>
           <span slot="title">评价管理</span>
       </el-menu-item>
+      <el-menu-item index="8" route="admin_posts">
+          <i class="el-icon-menu"></i>
+          <span slot="title">论坛管理</span>
+      </el-menu-item>
       <el-menu-item index="99" route="admin_user">
           <i class="el-icon-menu"></i>
           <span slot="title">管理员管理</span>

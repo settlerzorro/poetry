@@ -16,6 +16,11 @@
 
 	<select id="queryList" resultType="com.poetry.modules.posts.entity.PostsEntity">
 		select id,writer,member_id,name,create_time from posts
+		<where>
+			<if test="name != null">
+				name like '%${name}%'
+			</if>
+		</where>
         <choose>
 			<otherwise>
                 order by id desc

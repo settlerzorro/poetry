@@ -16,6 +16,7 @@ import PostsDetail from '../views/front/PostsDetail'
 import AdminIndex from '../views/admin/Index'
 import AdminLogin from '../views/admin/Login'
 import AdminMember from '../views/admin/member/Member'
+import AdminPosts from '../views/admin/posts/Posts'
 import AdminGoods from '../views/admin/goods/Goods'
 import AdminOrder from '../views/admin/order/Order'
 import AdminAdvert from '../views/admin/advert/Advert'
@@ -96,6 +97,11 @@ export default new Router({
             path: '/admin_member',
             name: 'AdminMember',
             component: AdminMember
+        },
+        {
+            path: '/admin_posts',
+            name: 'AdminPosts',
+            component: AdminPosts
         },
         {
             path: '/admin_goods',

@@ -13,7 +13,25 @@
               @click="addPost"
               >回复</el-button
             >
-
+            <el-container style="border-bottom: 1px solid #ddd">
+              <el-aside width="200px">
+                <div
+                  style="
+                    background: #e5edf2;
+                    height: calc(100% - 40px);
+                    padding: 20px;
+                  "
+                ></div>
+              </el-aside>
+              <el-main style="background: #ffffff; padding: 8px 20px">
+                <div
+                  class="title"
+                  style="font-size: 22px; margin-bottom: 0px; line-height: 36px"
+                >
+                  {{ post.name }}
+                </div>
+              </el-main>
+            </el-container>
             <div
               v-for="(post, index) in postsList.slice(
                 (pageIndex - 1) * pageSize,
@@ -72,7 +90,11 @@
                     >
                       发表于 {{ post.time }}
                       <div style="display: inline-block; float: right">
-                        {{ (index + ((pageIndex - 1) * pageSize))  > 0 ? (index + ((pageIndex - 1) * pageSize)) + "楼" : "" }}
+                        {{
+                          index + (pageIndex - 1) * pageSize > 0
+                            ? index + (pageIndex - 1) * pageSize + "楼"
+                            : ""
+                        }}
                       </div>
                     </div>
                     <div
@@ -180,6 +202,7 @@ export default {
   },
   methods: {
     getPost() {
+      this.postsList = []
       var that = this;
       let id = this.$route.query.id;
       this.$axios({
@@ -192,16 +215,16 @@ export default {
           that.post.memberName = r.post.writer;
           that.post.time = r.post.createTime;
           that.postsList.push(that.post);
-        }
-      });
-      this.$axios({
-        url: that.domain + "/api/posts/reply/list?postsId=" + id,
-        data: {},
-      }).then(function (res) {
-        var r = res.data;
-        if (r.code == 0) {
-          that.postsList.push.apply(that.postsList, r.postsReplyList);
-          that.pageTotal = r.postsReplyList.length + 1;
+          that.$axios({
+            url: that.domain + "/api/posts/reply/list?postsId=" + id,
+            data: {},
+          }).then(function (res) {
+            var r = res.data;
+            if (r.code == 0) {
+              that.postsList.push.apply(that.postsList, r.postsReplyList);
+              that.pageTotal = r.postsReplyList.length + 1;
+            }
+          });
         }
       });
     },
