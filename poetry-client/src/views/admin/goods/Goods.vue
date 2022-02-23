@@ -88,12 +88,6 @@
                                 </el-option>
                             </el-select>
                         </el-form-item>
-                        <el-form-item label="价格">
-                            <el-input v-model="goods.price"></el-input>
-                        </el-form-item>
-                        <el-form-item label="库存">
-                            <el-input v-model="goods.stock"></el-input>
-                        </el-form-item>
                         <el-form-item label="详情">
                             <quill-editor ref="text" v-model="goods.describe" :options="editorOption" style="height: 300px; margin-bottom: 50px;" />
                         </el-form-item>
