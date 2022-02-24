@@ -69,17 +69,20 @@
 	 
 	<insert id="save" parameterType="com.poetry.modules.poetry.entity.PoetryEntity" useGeneratedKeys="true" keyProperty="id">
 		insert into poetry
-		(
-			`goods_name`, 
+		(	`author`,
+			`dynasty`,
+			`goods_name`,
 			`category_id`, 
 			`pic_url`,
 			`describe`, 
 			`create_time`,
-			'explain'
+			`explain`
 		)
 		values
 		(
-			#{goodsName}, 
+			#{author},
+			#{dynasty},
+			#{goodsName},
 			#{categoryId}, 
 			#{picUrl},
 			#{describe}, 
