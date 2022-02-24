@@ -228,6 +228,7 @@ export default {
           if (res.data.code == 0) {
             //成功
             that.showList = true;
+            that.fileList = []
             that.query();
           } else {
             that.errorMsg = res.data.msg;
