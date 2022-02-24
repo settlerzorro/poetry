@@ -29,16 +29,10 @@
 				c.id = #{categoryId}
 			</if>
 			<if test="goodsName != null and goodsName != ''">
-				and g.goods_name like '%${goodsName}%'
-			</if>
-			<if test="author != null and author != ''">
-				and g.author like '%${author}%'
-			</if>
-			<if test="dynasty != null and dynasty != ''">
-				and g.dynasty like '%${dynasty}%'
-			</if>
-			<if test="describe != null and describe != ''">
-				and g.describe like '%${describe}%'
+				or g.goods_name like '%${goodsName}%'
+				or g.author like '%${goodsName}%'
+				or g.dynasty like '%${goodsName}%'
+				or g.describe like '%${goodsName}%'
 			</if>
 		</where>
 		
