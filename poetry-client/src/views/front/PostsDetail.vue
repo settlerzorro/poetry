@@ -83,7 +83,7 @@
                       class="time"
                       style="
                         font-size: 12px;
-                        margin-bottom: 0px;
+                        margin-bottom: 16px;
                         border-bottom: 1px dashed #cdcdcd;
                         line-height: 36px;
                       "

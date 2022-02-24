@@ -19,6 +19,13 @@
                   <div>
                     <p>{{ goods.goodsName }}</p>
                   </div>
+                  <div style="font-size: 14px">
+                    <p>作者：{{ goods.author }}</p>
+                    <p>朝代：{{ goods.dynasty }}</p>
+                  </div>
+                  <div style="font-size: 12px">
+                    <p>描述：{{ goods.explain }}</p>
+                  </div>
                   <div>
                     <el-button type="danger" @click="buy">{{isBuy ? "已收藏" : "收藏"}}</el-button>
                   </div>
@@ -26,7 +33,7 @@
               </el-col>
             </el-row>
             <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
-              <el-tab-pane label="详情" name="1">
+              <el-tab-pane label="内容" name="1">
                 <div v-html="goods.describe"></div>
               </el-tab-pane>
               <el-tab-pane label="评价" name="2">
@@ -231,6 +238,7 @@ export default {
         .then(function (res) {
           if (res.data.code == 0) {
             that.$message.success("收藏成功");
+            that.isBuy = true;
           } else {
             that.$message.error(res.data.msg);
           }

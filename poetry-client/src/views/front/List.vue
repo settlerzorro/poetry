@@ -7,7 +7,7 @@
               <el-main>
                 <div style="width: 1280px; margin: 0 auto">
                 <div style="margin-bottom: 20px; display: flex; justify-content: center;">
-                  <el-input v-model="q" placeholder="请输入商品名称" style="max-width: 600px"></el-input>
+                  <el-input v-model="q" placeholder="请输入诗词信息（诗词名称、作者、朝代、内容）" style="max-width: 600px"></el-input>
                   <el-button @click="getGoods" type="primary">查找</el-button>
                 </div>
 
@@ -19,9 +19,8 @@
                         <img :src="o.picUrl" class="image" style="width: 100%">
                         <div style="padding: 14px;">
                           <div class="name">{{o.goodsName}}</div>
-                          <div style="color: #f56c6c">￥{{o.price}}</div>
                           <div class="bottom clearfix">
-                            <el-button type="text" class="button" @click="detail(o.id)">立即购买</el-button>
+                            <el-button type="text" class="button" @click="detail(o.id)">查看详情</el-button>
                           </div>
                         </div>
                       </el-card>

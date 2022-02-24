@@ -7,7 +7,7 @@
               <el-main>
                 <div style="width: 1280px; margin: 0 auto">
                 <div style="margin-bottom: 20px; display: flex; justify-content: center;">
-                  <el-input v-model="q" placeholder="请输入诗词信息（诗词名称、作者）" style="max-width: 600px"></el-input>
+                  <el-input v-model="q" placeholder="请输入诗词信息（诗词名称、作者、朝代、内容）" style="max-width: 600px"></el-input>
                   <el-button @click="query" type="primary">查找</el-button>
                 </div>
                 <el-carousel>
