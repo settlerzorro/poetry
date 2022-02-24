@@ -27,6 +27,17 @@ public class PostsReplyEntity implements Serializable {
 	// 被回复者名字
 	private String replyMemberName;
 
+	// 音频路径
+	private String fileUrl;
+
+	public String getFileUrl() {
+		return fileUrl;
+	}
+
+	public void setFileUrl(String fileUrl) {
+		this.fileUrl = fileUrl;
+	}
+
 	private Date time;
 
 	public Integer getId() {

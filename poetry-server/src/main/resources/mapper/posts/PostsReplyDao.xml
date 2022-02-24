@@ -13,6 +13,7 @@
 		<result property="replyMemberId" column="reply_member_id"/>
 		<result property="replyMemberName" column="reply_member_name"/>
         <result property="time" column="time"/>
+		<result property="fileUrl" column="fileUrl"/>
     </resultMap>
 
 
@@ -47,7 +48,8 @@
 			`posts_id`,
 			`reply_member_id`,
 			`reply_member_name`,
-			`time`
+			`time`,
+			`fileUrl`
 		)
 		values
 		(
@@ -58,7 +60,8 @@
 			#{postsId},
 			#{replyMemberId},
 			#{replyMemberName},
-			#{time}
+			#{time},
+			#{fileUrl}
 		)
 	</insert>
 	 
