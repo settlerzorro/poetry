@@ -16,7 +16,7 @@
                     <el-row :gutter="10">
                       <el-col :span="4" v-for="(o, index) in goodses" :key="index" style="margin-bottom: 20px">
                       <el-card :body-style="{ padding: '0px' }" >
-                        <img :src="o.picUrl" class="image" style="width: 100%">
+                        <img :src="o.picUrl" class="image" style="width: 100%;height:160px">
                         <div style="padding: 14px;">
                           <div class="name">{{o.goodsName}}</div>
                           <div class="bottom clearfix">
